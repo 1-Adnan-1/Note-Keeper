@@ -1,0 +1,256 @@
+/* * Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+/* * CSS Sıfırlama */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  list-style: none;
+}
+
+body {
+  background-color: #fa8bff;
+  background-image: linear-gradient(
+    45deg,
+    #fa8bff 0%,
+    #2bd2ff 52%,
+    #2bff88 90%
+  );
+  height: 100vh;
+}
+
+.add-box,
+.bottom-content,
+.settings .menu li,
+.popup,
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* * Wrapper */
+.wrapper {
+  margin: 50px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 265px);
+  gap: 25px;
+}
+
+.wrapper li {
+  background-color: #fff;
+  height: 250px;
+  padding: 15px 20px 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.add-box {
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.add-box .icon {
+  height: 78px;
+  width: 78px;
+  color: #47c8ff;
+  font-size: 40px;
+  border: 2px dashed #47c8ff;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+
+.add-box p {
+  color: #47c8ff;
+  margin-top: 20px;
+  font-weight: 500;
+}
+
+.note {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.note .details {
+  max-height: 165px;
+  overflow-y: auto;
+}
+.note p {
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.note span {
+  display: block;
+  color: #575757;
+  font-size: 16px;
+  margin-top: 5px;
+}
+.note .bottom-content {
+  padding-top: 10px;
+  border-top: 1px solid #ccc;
+}
+
+.note .bottom-content span {
+  color: #6d6d6d;
+  font-size: 14px;
+}
+
+.bottom-content .settings {
+  position: relative;
+}
+.bottom-content .settings {
+  color: #6d6d6d;
+  cursor: pointer;
+  font-size: 15px;
+}
+.settings .menu {
+  z-index: 1;
+  position: absolute;
+  bottom: 0;
+  right: -5px;
+  padding: 5px 0;
+  background-color: #fff;
+  border-radius: 4px;
+  transform: scale(0);
+  transform-origin: bottom right;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease;
+}
+
+.settings.show .menu {
+  transform: scale(1);
+}
+.settings.show .menu li {
+  height: 25px;
+  font-size: 16px;
+  margin-bottom: 2px;
+  padding: 17px 15px;
+  cursor: pointer;
+  box-shadow: unset;
+  border-radius: unset;
+  justify-content: flex-start;
+}
+
+.menu li:last-child {
+  margin-bottom: 0;
+}
+.menu li:hover {
+  background-color: #f8f8f8;
+}
+.menu li i {
+  padding-right: 8px;
+}
+
+/** POPUP */
+.popup,
+.popup-box {
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.35s ease;
+}
+.popup-box.show,
+.popup.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.popup-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.popup-box .popup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.95);
+  width: 100%;
+  max-width: 400px;
+  justify-content: center;
+}
+.popup .content {
+  background-color: #fff;
+  width: calc(100% - 15px);
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+.content header {
+  padding: 15px 25px;
+  border-bottom: 1px solid #ccc;
+}
+.content header p {
+  font-size: 20px;
+  font-weight: 500;
+}
+.content header i {
+  color: #8b8989;
+  font-size: 23px;
+  cursor: pointer;
+}
+.content form {
+  margin: 15px 25px 35px;
+}
+.content form .row {
+  margin-bottom: 20px;
+}
+.content form .row label {
+  display: block;
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+form :where(input, textarea) {
+  height: 50px;
+  width: 100%;
+  outline: none;
+  border-radius: 4px;
+  font-size: 17px;
+  text-indent: 15px;
+  border: 1px solid #999;
+}
+form :where(input, textarea):focus {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.11);
+}
+form .row textarea {
+  height: 150px;
+  resize: none;
+  padding: 8px 15px;
+}
+form button {
+  width: 100%;
+  height: 50px;
+  color: #fff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 17px;
+  background-color: #47c8ff;
+  border-radius: 4px;
+}
+
+/* Responsive Tasarım */
+
+@media (max-width: 660px) {
+  .wrapper {
+    margin: 15px;
+    gap: 15px;
+    grid-template-columns: repeat(auto-fill, 100%);
+  }
+  .popup-box .popup {
+    max-width: calc(100%-15px);
+  }
+
+  .bottom-content .settings i {
+    font-size: 17px;
+  }
+}

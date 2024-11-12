@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NOTEKEEPER</title>
+    <!-- * CSS LİNK -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- * Box Icons -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- * Pop-up -->
+    <div class="popup-box">
+      <div class="popup">
+        <div class="content">
+          <header>
+            <p>Yeni Not </p>
+            <i class="bx bx-x"></i>
+          </header>
+          <form>
+            <!-- Title -->
+            <div class="row title">
+              <label>Başlık</label>
+              <input type="text" />
+            </div>
+            <!-- Description -->
+            <div class="row description">
+              <label>Açıklama</label>
+              <textarea></textarea>
+            </div>
+            <button type="submit">Not Ekle</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- * Wrapper -->
+    <div class="wrapper">
+      <!-- Ekleme Alanı -->
+      <li class="add-box">
+        <div class="icon">
+          <i class="bx bx-plus"></i>
+        </div>
+        <p>Add New note</p>
+      </li>
+      <!--* Note  -->
+      <li class="note">
+        <!-- Details -->
+        <div class="details">
+          <p>Note Başlık</p>
+          <span>Note Açıklama</span>
+        </div>
+        <!-- Bottom-Content -->
+        <div class="bottom-content">
+          <span>Tarih</span>
+          <div class="settings">
+            <i class="bx bx-dots-horizontal-rounded"></i>
+            <ul class="menu">
+              <li><i class="bx bx-edit"></i>Düzenle</li>
+              <li><i class="bx bx-trash"></i>Sil</li>
+            </ul>
+          </div>
+        </div>
+      </li>
+    </div>
+
+    <!-- * JS LİNK -->
+    <script src="./main.js"></script>
+  </body>
+</html>

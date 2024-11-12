@@ -14,7 +14,7 @@ const months = [
   "December",
 ];
 
-// ! HTML den İlgili Elemanların Çekilmesi
+// HTML denElemanların Çekilmesi
 const addBox = document.querySelector(".add-box");
 const popupBoxContainer = document.querySelector(".popup-box");
 const popupBox = document.querySelector(".popup-box .popup");
@@ -25,16 +25,16 @@ const settings = document.querySelector(".settings");
 const wrapper = document.querySelector(".wrapper");
 const button = document.querySelector(".popup button");
 
-// Not güncellemesi için değişkenlerin oluşturulması
+// Not güncellemesi oluşturulması
 
 let isUpdate = false;
 let updateId;
 
-// * Localstorage'dan notları çekme
+// * Localstorage dan notları çekme
 
 let notes = JSON.parse(localStorage.getItem("notes")) || [];
 
-// * Ekle iconuna tıklayınca popup açılsın
+// *  popup açılsın
 addBox.addEventListener("click", () => {
   // Popup ı görünür kıldık
   popupBoxContainer.classList.add("show");
@@ -44,7 +44,7 @@ addBox.addEventListener("click", () => {
   document.querySelector("body").style.overflow = "hidden";
 });
 
-// * Kapat iconuna tıklayınca popup kapansın
+// * popup kapansın
 closeIcon.addEventListener("click", () => {
   // Popup ı kaldır
   popupBoxContainer.classList.remove("show");
@@ -63,7 +63,7 @@ form.addEventListener("submit", (e) => {
   // Boşlukları temizledik
   let title = titleInput.value.trim();
   let description = descriptionInput.value.trim();
-  //Inputların boş olma durumunu kontrol ettik eğer doluysa bir not objesi oluşturduk ve bunu locale gönderdik.
+  // doluysa bir not objesi oluşturduk ve bunu locale gönder.
   if (title && description) {
     const date = new Date();
     let month = months[date.getMonth()];
@@ -71,9 +71,9 @@ form.addEventListener("submit", (e) => {
     let year = date.getFullYear();
 
     let noteInfo = { title, description, date: `${month} ${day}, ${year}` };
-    //Eğer düzenleme moddaysak notu güncelle değilse yeni note ekle
+    // notu güncelle değilse yeni note ekle
     if (isUpdate) {
-      // Güncelleme modundaysak ilgili elemanın içeriğini güncelle
+      //  ilgili elemanın içeriğini güncelle
       notes[updateId] = noteInfo;
       // Güncelleme modunu kapat
       isUpdate = false;
@@ -97,7 +97,7 @@ form.addEventListener("submit", (e) => {
   showNotes();
 });
 
-// Note Silme Özelliğini sağlayan fonksiyon
+// Silme Özelliğini sağlayan fonksiyon
 function deleteNote(noteId) {
   if (confirm("Silmek istediğinizden eminmisiniz ?")) {
     // Belirlenen note u note dizisinden kaldır
@@ -109,7 +109,7 @@ function deleteNote(noteId) {
   }
 }
 
-// Note güncellemesi yapan fonksiyon
+// Note güncellemesi 
 
 function updateNote(noteId, title, description) {
   isUpdate = true;
@@ -125,12 +125,12 @@ function updateNote(noteId, title, description) {
 
 // Menü içeriğini gösteren fonksiyon
 function showMenu(elem) {
-  // parentElement bir elemanın kapsam elemanına erişmek için kullanılır.Burada tıklanan iconun kapsayıcısına bir class eklemememiz gerektiğinden parentElement ile bu elemanın kapsayıcısına eriştik.
+  // parentElement bir elemanın kapsam elemanına erişmek için kullanılır
   // Kapsam elemanına show classı ekledik
   elem.parentElement.classList.add("show");
-  // Menu harici bir yere tıklanırsa show classını kaldır
+  //  harici bir yere tıklanırsa show classını kaldır
   document.addEventListener("click", (e) => {
-    // Tıklanılan elemana i etiketi değilse yada kapsam elemana eşit değilse show classını kaldır.Buradaki 'I' kullanımın sebebi tagName property sinin büyük harf  olarak kabul edilmesidir.
+    // i etiketi değilse yada kapsam elemana eşit değilse show classını kaldır.
     if (e.target.tagName != "I" || e.target != elem) {
       elem.parentElement.classList.remove("show");
     }
@@ -165,21 +165,21 @@ function showNotes() {
           </div>
         </div>
       </li>`;
-    // insertAdjacentHTML metodu belirli bir öğeyi Html kısmına sıratlı şekilde eklemek için kullanılır.Bu metod hangi yapının ardında bir  eleman eklenecekse bunu yazmamızı sonrasında ise eklenecek elemanın içeriğini belirltmemizi ister.
+    // insertAdjacentHTML metodu belirli bir öğeyi Html kısmına sıralı şekilde eklemek için kullanılır.
     addBox.insertAdjacentHTML("afterend", liTag);
   });
 }
 
-// Silme ve düzenleme işlemi yapılabilmesi için bazı düzenlemeler
-// ! Wrappper Html'den erişilen kapsam elemandır
+// Silme ve düzenleme işlemi yapılabilmesi
+// Wrappper Html'den erişilen kapsam elemandır
 wrapper.addEventListener("click", (e) => {
-  // Eğer menu üç nokta iconuna tıklanırsa showMenu fonk. çalıştır
+  // Eğer menu üç nokta iconuna tıklanırsa showMenu  çalıştır
   if (e.target.classList.contains("bx-dots-horizontal-rounded")) {
     showMenu(e.target);
   }
-  // Eğer sil iconuna tıklandıysa deleteNote fonk. çalıştır
+  // Eğer sil iconuna tıklandıysa deleteNote  çalıştır
   else if (e.target.classList.contains("bx-trash")) {
-    // dataset bir elemana özellik atamaya yarar.Bu örnekte id atadık
+    // dataset bir elemana özellik atamaya yarar.
     const noteId = parseInt(e.target.closest(".note").dataset.id, 10);
     deleteNote(noteId);
   } else if (e.target.classList.contains("bx-edit")) {
